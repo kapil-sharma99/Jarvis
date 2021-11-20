@@ -17,6 +17,7 @@ def speak(audio):
     engine.say(audio)
     engine.runAndWait()
 speak("Initializing Jarvis!!")
+print("HELL")
 
 
 #This function will wish as per the current time
