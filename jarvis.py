@@ -6,6 +6,7 @@ import webbrowser
 import smtplib
 import os
 
+
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[0].id)
@@ -17,7 +18,6 @@ def speak(audio):
     engine.say(audio)
     engine.runAndWait()
 speak("Initializing Jarvis!!")
-print("HELL")
 
 
 #This function will wish as per the current time
@@ -37,7 +37,7 @@ def takeCommand():
     # Takes microphone input from user and convert it into string output
     r = sr.Recognizer()
     with sr.Microphone() as source:
-        print("Listning....")
+        print("Listining....")
         r.pause_threshold = 1
         audio = r.listen(source)
 
@@ -53,4 +53,38 @@ def takeCommand():
 
 if __name__ == "__main__":
     wishMe()
-    takeCommand()
+    while True:
+        query = takeCommand().lower()
+
+        #Logic for executing task based on queries...
+        if 'wikipedia' in query:
+            speak("Searching in wikipedia....")
+            query = query.replace("wikipedia", "")
+            results = wikipedia.summary(query, sentences=2)
+            speak("According to wikipedia..")
+            speak(results)
+
+        elif 'open youtube' in query:
+            webbrowser.open("youtube.com")
+
+        elif 'open whatsapp' in query:
+            wpath = "C:\\Users\\ks282\\AppData\\Local\\WhatsApp\\WhatsApp.exe"
+            os.startfile(wpath)
+
+        elif 'open gmail' in query:
+            webbrowser.open("gmail.com")
+
+        elif 'open github' in query:
+            webbrowser.open("github.com")
+
+        elif 'the time' in query:
+            strTime = datetime.now().strftime("%H:%M:%S")
+            speak(f"The time is: {strTime}")
+
+        elif 'open code' in query:
+            codePath = "D:\\Microsoft VS Code\\Code.exe"
+            os.startfile(codePath)
+
+        elif 'play songs' in query:
+            webbrowser.open("wynk.in/music")
+
