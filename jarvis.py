@@ -88,3 +88,6 @@ if __name__ == "__main__":
         elif 'play songs' in query:
             webbrowser.open("wynk.in/music")
 
+        elif 'quit' in query:
+            speak("Okay sir, Good byee")
+            exit()
