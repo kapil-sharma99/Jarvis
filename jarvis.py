@@ -3,7 +3,6 @@ from datetime import datetime
 import speech_recognition as sr
 import wikipedia
 import webbrowser
-import smtplib
 import os
 
 
